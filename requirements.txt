@@ -2,7 +2,6 @@ streamlit==1.38.0
 numpy==1.26.4
 pandas==2.2.2
 plotly==5.24.0
-gym==0.26.2
-gym-notices==0.0.8
+gymnasium==0.29.1
 stable-baselines3==2.3.0
 torch==2.2.2
