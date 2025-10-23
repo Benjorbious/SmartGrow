@@ -157,10 +157,28 @@ def input_label(value):
     elif value < 0.66: return "Medium 💧/🌞/🌿"
     else: return "High 💧/🌞/🌿"
 
+# -------------------------
+# Crop-Aware Health Labels
+# -------------------------
 def health_label(value):
-    if value < 0.4: return "Poor ⚠️", "red"
-    elif value < 0.7: return "Moderate ⚡", "yellow"
-    else: return "Good ✅", "green"
+    # Crop-specific visual flair (purely cosmetic)
+    if "Maize" in crop_choice:
+        good_icon, moderate_icon, poor_icon = "🌽✅", "🌽⚡", "🌽⚠️"
+    elif "Wheat" in crop_choice:
+        good_icon, moderate_icon, poor_icon = "🌾✅", "🌾⚡", "🌾⚠️"
+    elif "Tomatoes" in crop_choice:
+        good_icon, moderate_icon, poor_icon = "🍅✅", "🍅⚡", "🍅⚠️"
+    elif "Rice" in crop_choice:
+        good_icon, moderate_icon, poor_icon = "🍚✅", "🍚⚡", "🍚⚠️"
+    else:  # Beans
+        good_icon, moderate_icon, poor_icon = "🫘✅", "🫘⚡", "🫘⚠️"
+
+    if value < 0.4:
+        return f"Poor {poor_icon}", "red"
+    elif value < 0.7:
+        return f"Moderate {moderate_icon}", "yellow"
+    else:
+        return f"Good {good_icon}", "green"
 
 def manual_to_numeric(choice):
     return {"Low": 0.2, "Medium": 0.5, "High": 0.8}[choice]
