@@ -201,7 +201,7 @@ seed = st.sidebar.number_input("Random seed", value=0, min_value=0)
 manual_water = st.sidebar.selectbox("Manual Water", ["Low", "Medium", "High"])
 manual_light = st.sidebar.selectbox("Manual Light", ["Low", "Medium", "High"])
 manual_nutrients = st.sidebar.selectbox("Manual Nutrients", ["Low", "Medium", "High"])
-do_train = st.sidebar.button("Train / Retrain AI")
+do_train = st.sidebar.button("Go")
 load_model_file = st.sidebar.file_uploader("Load model (.zip)", type=["zip"])
 
 tmpdir = tempfile.gettempdir()
