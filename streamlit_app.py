@@ -186,23 +186,21 @@ def manual_to_numeric(choice):
 # Sidebar Controls
 # -------------------------
 st.sidebar.header("Controls")
-
-# Crop selection (visual / non-functional for now)
-crop_choice = st.sidebar.selectbox(
-    "Select Crop",
-    ["Maize 🌽", "Wheat 🌾", "Tomatoes 🍅", "Rice 🍚", "Beans 🫘"],
-    index=0
-)
-st.sidebar.caption(f"Current crop selected: **{crop_choice}**")
-
 episode_length = st.sidebar.slider("Episode length (days)", 6, 30, 12)
 train_timesteps = st.sidebar.slider("AI Training Timesteps", 1000, 20000, 4000, step=1000)
 seed = st.sidebar.number_input("Random seed", value=0, min_value=0)
-manual_water = st.sidebar.selectbox("Manual Water", ["Low", "Medium", "High"])
-manual_light = st.sidebar.selectbox("Manual Light", ["Low", "Medium", "High"])
-manual_nutrients = st.sidebar.selectbox("Manual Nutrients", ["Low", "Medium", "High"])
-do_train = st.sidebar.button("Go")
+manual_water = st.sidebar.selectbox("Manual Water", ["Low","Medium","High"])
+manual_light = st.sidebar.selectbox("Manual Light", ["Low","Medium","High"])
+manual_nutrients = st.sidebar.selectbox("Manual Nutrients", ["Low","Medium","High"])
 load_model_file = st.sidebar.file_uploader("Load model (.zip)", type=["zip"])
+
+# Centered Go! button
+do_train = st.sidebar.empty()  # placeholder
+with st.sidebar:
+    st.markdown("<div style='text-align:center'>", unsafe_allow_html=True)
+    if st.button("Go!"):
+        do_train = True
+    st.markdown("</div>", unsafe_allow_html=True)
 
 tmpdir = tempfile.gettempdir()
 model_path = os.path.join(tmpdir, "ppo_greenhouse.zip")
