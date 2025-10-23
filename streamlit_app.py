@@ -164,11 +164,19 @@ def health_label(value):
 
 def manual_to_numeric(choice):
     return {"Low": 0.2, "Medium": 0.5, "High": 0.8}[choice]
-
 # -------------------------
 # Sidebar Controls
 # -------------------------
 st.sidebar.header("Controls")
+
+# Crop selection (visual / non-functional for now)
+crop_choice = st.sidebar.selectbox(
+    "Select Crop",
+    ["Maize 🌽", "Wheat 🌾", "Tomatoes 🍅", "Rice 🍚", "Beans 🫘"],
+    index=0
+)
+st.sidebar.caption(f"Current crop selected: **{crop_choice}**")
+
 episode_length = st.sidebar.slider("Episode length (days)", 6, 30, 12)
 train_timesteps = st.sidebar.slider("AI Training Timesteps", 1000, 20000, 4000, step=1000)
 seed = st.sidebar.number_input("Random seed", value=0, min_value=0)
